@@ -1,10 +1,11 @@
 ---
-layout:     post
-title:      "Stand Up Script"
-subtitle:   " \"Powershell script to remind you stand up and take break while you work continuously \""
-date:       2016-06-06 14:00:00
-author:     "Nithin VR"
+layout: post
+title: "Stand Up Script"
+subtitle: " \"Powershell script to remind you stand up and take break while you work continuously \""
+date: 2016-06-06 14:00:00
+author: "Nithin VR"
 header-img: "StandUp_760_348.png"
+catalog: true
 tags:
     - Powershell
     - Scripting
