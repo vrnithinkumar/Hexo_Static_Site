@@ -1,10 +1,11 @@
 ---
 layout:     post
-title: Revert a Commit Already Pushed to a Remote Repository
+title: Revert a Commit Which Already Pushed to a Remote Repository
 date: 2016-05-30 00:10:03
 subtitle: ""
 author:     "Nithin VR"
-header-img: "post-bg-2015.jpg"
+header-img: "git.png"
+catalog: true
 tags:
 	- Git
 	- Version Control
