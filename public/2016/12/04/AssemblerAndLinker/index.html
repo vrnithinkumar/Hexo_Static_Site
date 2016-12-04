@@ -13,11 +13,11 @@
 
     <title>
         
-          Stand Up Script - Sharing Some Bits | VR&#39;s Blog
+          Assembler &amp; Linker - Sharing Some Bits | VR&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://vrnithinkumar.github.io/2016/06/06/Script/">
+    <link rel="canonical" href="http://vrnithinkumar.github.io/2016/12/04/AssemblerAndLinker/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -148,7 +148,7 @@
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('StandUp_760_348.png')
+        background-image: url('Assembly.jpg')
     }
 </style>
 <header class="intro-header" >
@@ -158,16 +158,18 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/tags/#Powershell" title="Powershell">Powershell</a>
+                          <a class="tag" href="/tags/#Compiler" title="Compiler">Compiler</a>
                         
-                          <a class="tag" href="/tags/#Scripting" title="Scripting">Scripting</a>
+                          <a class="tag" href="/tags/#Assembler" title="Assembler">Assembler</a>
+                        
+                          <a class="tag" href="/tags/#Linker" title="Linker">Linker</a>
                         
                     </div>
-                    <h1>Stand Up Script</h1>
-                    <h2 class="subheading"> &quot;Powershell script to remind you stand up and take break while you work continuously &quot;</h2>
+                    <h1>Assembler &amp; Linker</h1>
+                    <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by Nithin VR on
-                        2016-06-06
+                        2016-12-04
                     </span>
                 </div>
             </div>
@@ -186,29 +188,59 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Stand-Up-Script"><a href="#Stand-Up-Script" class="headerlink" title="Stand Up Script"></a>Stand Up Script</h1><p>Powershell script that will alert at each hour by Desktop notification as well as using beep sound. To avoid continues sitting and working this script will help to remind to stand up or relax each hour. It will lock the PC at each hour too :)</p>
-<h3 id="What-does-it-do"><a href="#What-does-it-do" class="headerlink" title="What does it do"></a>What does it do</h3><blockquote>
+                <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Between compiling and executing a High-Level programming language, Many intermediate steps like Lexical Analyzing, Syntax Analyzing, Semantic Analyzing, Pre Optimizing, Assembly Code generation, Post Optimizing,  Assembling,  Linking and Loading are happening. In this post we are mainly covering </p>
 <ul>
-<li>It will beep according to the time.</li>
-<li>Show Desktop notification with time and message.</li>
-<li>Lock the the computer automatically after the notification.</li>
+<li>Assembler</li>
+<li>Linker</li>
+<li>Loader</li>
+<li>Disassembler</li>
 </ul>
-</blockquote>
-<p><em>Screen Shot of Notification:</em><br><img src="/img/Notifiaction.png" alt="alt text"></p>
-<h3 id="To-Do"><a href="#To-Do" class="headerlink" title="To Do"></a>To Do</h3><blockquote>
+<h3 id="Assembler"><a href="#Assembler" class="headerlink" title="Assembler"></a>Assembler</h3><p>Assembler will create  object code from the assembly code. After Assembly Code generation and Post Optimizing, the generated assembly code is translated to Object code. Assembly Language aka <strong>asm</strong> is low-level programming language which is specific for CPU architecture. Its actually human readable representation of machine code.<br>For example:<br>Assembly Code for moving value 55 hex into register BL</p>
+<pre><code>MOV BL, 055H
+</code></pre><p>Corresponding Machine Code</p>
+<pre><code>10111000
+</code></pre><p>An assembler will generate object code by translating combinations of mnemonics and syntax for operations and addressing modes into their numerical equivalents. Each object code file combined to create the executable file.</p>
+<p><strong>In short, assembler will</strong> </p>
 <ul>
-<li>Get time interval for notification from user as command line parameter.</li>
-<li>Change the busy waiting to sleep.</li>
-<li>Re-factor the code.</li>
+<li>Translate assembly instructions, macros, and  pseudo-instructions into binary machine instructions</li>
+<li>Convert decimal numbers, etc. specified by programmer into binary.</li>
+<li>Put the translated instructions into a file for future use.</li>
 </ul>
-</blockquote>
-<h3 id="How-to-Run-it"><a href="#How-to-Run-it" class="headerlink" title="How to Run it"></a>How to Run it</h3><blockquote>
+<p><strong>Types of Assemblers</strong></p>
+<p><strong> 1) Two pass assembler </strong><br>In two pass assembler we use two pass to complete generation of machine code. First pass we will create a symbol table <strong>(SYMTAB)</strong> where we keep all the symbols and their values. Any unknown values or addressed we encounter we will add it to the symbol table and update it when we encounter that value in future. For example </p>
+<pre><code>10 JMP LOOP_END     \\ Address of label2 is unknown we add this to symbol table.
+11 ADD  EAX EBX
+12 LOOP_END:       \\ Here we update the symbol table with actual address.
+
+Symbol Table 
+
+| Symbol Name | Symbol Value |
+|:-----------:|:------------:|
+|    LOOP_END |      12      |
+|    Label2   |      18      |
+</code></pre><p>Using the symbol table we will create valid machine code on the second pass.</p>
+<p><strong>2) One pass assembler</strong><br>In one pass assembler, we convert the whole assembly code in to machine code by one pass unlike two pass assembler. We keep different type of symbol table where each unknown symbols and all locations it used are stored. Whenever we encounter the initialization of the symbol we will check the symbol table and go back to  update all places it used with the actual value. </p>
+<p><strong>Object File</strong> </p>
+<p>Object files are group of blocks of information about the program in binary format. Blocks contain program code,  program data, and data structures that guide the linker and loader. Its the output from the assembler there are different forms of object file based on how it used.: </p>
+<ol>
+<li><strong>Relocatable object file</strong>. Contains binary code and data in a form that can be combined with other relocatable object files at compile time to create an executable object file.</li>
+<li><strong>Executable object file</strong>. Contains binary code and data in a form that can be copied directly into memory and executed.</li>
+<li><strong>Shared object file</strong>. A special type of relocatable object file that can be loaded into memory and linked dynamically, at either load time or run time.  </li>
+</ol>
+<p>Common object file formats</p>
 <ul>
-<li>Download the script from <a href="https://github.com/vrnithinkumar/powershell/blob/master/StandUpAlarm.ps1" target="_blank" rel="external">github</a>.</li>
-<li>Run <code>powershell StandUpAlaram.ps1</code></li>
+<li><strong>COFF :</strong> Common Object File format. Windows uses a variant of COFF called the Portable Executable (PE) format.</li>
+<li><strong>ELF :</strong> Executable and Linkable Format Mainly used in Linux.</li>
 </ul>
-</blockquote>
-<p>Please feel free to send the feedback, bug, or any suggestions.</p>
+<h3 id="Linker"><a href="#Linker" class="headerlink" title="Linker"></a>Linker</h3><p>Linker will take all the object file created by the assembler and combine them into a single executable file , library or another big object file.Which can be be loaded to the memory and execute. It enable separate compilation and gives modularity to big programs.</p>
+<ul>
+<li><p><strong>Symbol resolution.</strong><br>Object files define and reference symbols. The purpose of symbol resolution is to associate each symbol reference with exactly one symbol definition.</p>
+</li>
+<li><p><strong>Relocation.</strong><br>Compilers and assemblers generate code and data sections that start at address 0. The linker relocates these sections by associating a memory location with each symbol definition, and then modifying all of the references to those symbols so that they point to this memory location.</p>
+</li>
+<li><p><strong>Static linkers.</strong><br>Such as the Unix ld program take as input a collection of relocatable object files and command line arguments and generate as output a fully linked executable object file that can be loaded and run.</p>
+</li>
+</ul>
 
 
                 <hr>
@@ -217,13 +249,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2016/12/04/AssemblerAndLinker/" data-toggle="tooltip" data-placement="top" title="Assembler & Linker">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2016/05/30/Revert-A-Commit/" data-toggle="tooltip" data-placement="top" title="Revert a Commit Which Already Pushed to a Remote Repository">Next Post &rarr;</a>
+                            <a href="/2016/06/06/Script/" data-toggle="tooltip" data-placement="top" title="Stand Up Script">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -270,9 +298,11 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Powershell" title="Powershell">Powershell</a>
+                          <a class="tag" href="/tags/#Compiler" title="Compiler">Compiler</a>
                         
-                          <a class="tag" href="/tags/#Scripting" title="Scripting">Scripting</a>
+                          <a class="tag" href="/tags/#Assembler" title="Assembler">Assembler</a>
+                        
+                          <a class="tag" href="/tags/#Linker" title="Linker">Linker</a>
                         
                     </div>
                 </section>
@@ -293,8 +323,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "vrnithinkumar";
-    var disqus_identifier = "http://vrnithinkumar.github.io/2016/06/06/Script/";
-    var disqus_url = "http://vrnithinkumar.github.io/2016/06/06/Script/";
+    var disqus_identifier = "http://vrnithinkumar.github.io/2016/12/04/AssemblerAndLinker/";
+    var disqus_url = "http://vrnithinkumar.github.io/2016/12/04/AssemblerAndLinker/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
