@@ -52,6 +52,6 @@ After :
 - There exist some shortcuts to reorder the parameter in VS but ii didn't work for me and even if it work, We need to select each AreEqual method and apply those shortcut.
 
 ##### More Reference:
->- [Using Regular Expressions in Visual Studio](https://msdn.microsoft.com/en-us/library/2k3te2cs.aspx)
->- [Assert.AreEqual Method (Object, Object) (Microsoft.VisualStudio.TestTools.UnitTesting)](https://msdn.microsoft.com/en-us/library/ms243413.aspx)
+>- [GitHub for the Roslyn Team](https://channel9.msdn.com/Blogs/dotnet/github-for-the-roslyn-team)
+>- [Git Training for the .NET Team](https://channel9.msdn.com/Series/NET-Framework/Git-Training-for-the-NET-Team)
 >- [shortcut to swap/reorder parameters in vs?](https://stackoverflow.com/questions/3292292/is-there-a-shortcut-to-swap-reorder-parameters-in-visual-studio-ide)
