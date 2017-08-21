@@ -1,17 +1,16 @@
 ---
 layout: post
-title: "RegEx in Visual Studio"
-subtitle: " \"Swap parameters in Visual Studio using regular rxpression.\""
-date: 2017-08-19 14:00:00
+title: "Git Basics"
+subtitle: " \"Enough basics oo get started with Git.""
+date: 2017-08-21 14:00:00
 author: "Nithin VR"
-header-img: "vs.png"
+header-img: "Git_Basics.png"
 catalog: true
 tags:
-    - VisualStdio
-    - RegEx
+    - Git
 ---
-## Swap parameters using regular expression
-This issue is occurred to me many times while sending review request, for example when I use Assert.AreEqual() method and the parameters are not in the order ( expected value, actual value) is got swapped. It's boring and long vexing job to correct all the Assert.AreEqual() parameter order. While searching on Internet found this easy way to swap the parameters using Regular Expression.
+## Introduction to Git
+[Git](https://git-scm.com/), a version control created by [Linus](https://en.wikipedia.org/wiki/Linus_Torvalds), creator of Linux. It was created for managing contributions to linux code base.
 ```csharp
 public static void AreEqual(object expected,object actual)  
 ```
