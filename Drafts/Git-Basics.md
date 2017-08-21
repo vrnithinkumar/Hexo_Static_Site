@@ -11,21 +11,11 @@ tags:
 ---
 ## Introduction to Git
 [Git](https://git-scm.com/), a version control created by [Linus](https://en.wikipedia.org/wiki/Linus_Torvalds), creator of Linux. It was created for managing contributions to linux code base.
-```csharp
-public static void AreEqual(object expected,object actual)  
-```
-For example, I wrote code like :
-```csharp
-Assert.AreEqual("ActualString1", CretedString1);  
-Assert.AreEqual("ActualString2", CretedString2);  
-Assert.AreEqual("ActualString3", CretedString3);  
-```
-The parameter is reversed order, it's not right and For sure I will get a review comment to change this. To swap this parameter we can use find and replace with regular expression.
-{% blockquote %}
-Note : Regular Expression in Visual Studio is bit different.
-{% endblockquote %}
+##### Git Terms
+Remote : 
+Upstream :
 
-##### Add this as Search Term
+
 ```csharp
 \((".*"),([^\)]*)  
 ```
