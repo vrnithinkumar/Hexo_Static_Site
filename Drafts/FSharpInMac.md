@@ -10,7 +10,7 @@ tags:
     - Git
 ---
 ## Introduction to F# in Mac OS
-[Git](https://git-scm.com/), a version control created by [Linus](https://en.wikipedia.org/wiki/Linus_Torvalds), creator of Linux. It was created for managing contributions to linux code base.
-##### Git Terms
-Remote : 
-Upstream :
+In short we will be setting up in the below order.
+- Install mono
+- Install VS Code.
+- Install Ionide.
