@@ -17,4 +17,15 @@ In short we will be setting up in the below order.
 - Install Ionide.
 - Install Fake.
 - Fix the errors.
-## Introduction to F# in Mac OS
+### Installing mono
+Download the latest [Mono release for Mac](http://www.mono-project.com/docs/getting-started/install/mac/) and run the .pkg file and accept the terms of the license.
+Or 
+Install using brew
+```bash
+brew install mono
+```
+More Details : [Use F# on Mac OSX](http://fsharp.org/use/mac/)
+### Installing VS Code
+### Installing Ionide
+### Installing Fake
+### Trouble shooting with possible errors
