@@ -11,6 +11,6 @@ tags:
 ---
 ## Introduction to F# in Mac OS
 In short we will be setting up in the below order.
-- Install mono
+- Install mono.
 - Install VS Code.
 - Install Ionide.
