@@ -17,7 +17,7 @@ In short we will be setting up in the below order.
 - Install Ionide.
 - Install Fake.
 - Fix the errors.
-### Installing mono
+## Installing mono
 Download the latest [Mono release for Mac](http://www.mono-project.com/docs/getting-started/install/mac/) and run the .pkg file and accept the terms of the license.
 Or 
 Install using brew
