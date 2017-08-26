@@ -26,6 +26,8 @@ brew install mono
 ```
 More Details : [Use F# on Mac OSX](http://fsharp.org/use/mac/)
 ### Installing VS Code
+[Download Visual Studio Code](https://code.visualstudio.com) for Mac and Install.
 ### Installing Ionide
+Refer http://ionide.io
 ### Installing Fake
 ### Trouble shooting with possible errors
