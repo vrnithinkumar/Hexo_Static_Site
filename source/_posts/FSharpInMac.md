@@ -30,4 +30,10 @@ More Details : [Use F# on Mac OSX](http://fsharp.org/use/mac/)
 ### Installing Ionide
 Refer http://ionide.io
 ### Installing Fake
+
+### Hello World
+1) Create a F# project.
+2) Build it.
+3) Execute it.
+
 ### Trouble shooting with possible errors
