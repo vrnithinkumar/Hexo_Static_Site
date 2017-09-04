@@ -12,5 +12,6 @@ tags:
 # Accepted in F# Software Foundation’s Mentorship Program
 
 It is my pleasure to share that I got selected in F# Software Foundation’s Mentorship Program. 
+My mentor is Oleg. As per the discussion we decided to meet one hour in every weekend using Skype. For the first 30 minutes will be used to clear my doubts regarding F# and next 30 minutes will be used to  
 
 More details http://fsharp.org/mentorship/about.html
