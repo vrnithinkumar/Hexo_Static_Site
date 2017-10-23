@@ -16,7 +16,26 @@ Remote :
 Upstream :
 
 ##### Git Work Flow with GitHub
-- 
+- Forking the repo
+- Cloning the forked repo
+`git clone https://github.com/vrnithinkumar/Hexo_Static_Site.git`
+- Setting up stream
+`git remote add upstream git@bitbucket.org:some-gatekeeper-maintainer/some-project.git`
+- Creating a new branch
+`git checkout-b MyNewBranch`
+- Committing changes to the new branch
+`git push origin MyNewBranch`
+- Creating a pull request 
+- If reviewer asks for any change, making changes and committing to branch
+- Deleting the branch after merging
+`git branch -D MyNewBranch`
+- Pruning all branches
+`git remote prune origin`
+- Fetching changes from the upstream 
+`git fetch upstream`
+
+- Merging our master with upstream
+`git merge upstream/master`
 
 ##### More Reference:
 >- [GitHub for the Roslyn Team](https://channel9.msdn.com/Blogs/dotnet/github-for-the-roslyn-team)
