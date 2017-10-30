@@ -11,9 +11,8 @@ tags:
 ---
 
 Summary:
-I updated my progress in both sharp for fun and profit and hacker rank, we discussed one of my solution in hacker rank. 
-Oleg suggested to try Fibonacci in different ways
-
+I updated my progress in both sharp for fun and profit and hacker rank, we discussed one of my solution in hacker rank. Oleg suggested to try Fibonacci in different ways.
+[Compute the Perimeter of a Polygon](https://www.hackerrank.com/challenges/lambda-march-compute-the-perimeter-of-a-polygon)
 My Initial Code
 ```CSharp
 //Enter your code here. Read input from STDIN. Print output to STDOUT
@@ -28,7 +27,6 @@ let getPoint (s:string) =
         s.Split(' ') 
         |> Array.map System.Int32.Parse
     (va.[0], va.[1])
-
 
 [<EntryPoint>]
 let main argv = 
@@ -59,18 +57,17 @@ let distance ((x1:int,y1:int), (x2:int,y2:int)) =
     sqrt (double sqrSum)
 
 let getPoint (s:string) =
-    let [| x; y |] = 
+    let [| x ; y |] = 
         s.Split(' ') 
         |> Array.map System.Int32.Parse
-    x,y
+    x, y
 
 [<EntryPoint>]
 let main argv = 
-    let t = System.Console.ReadLine()|> int
+    let testCases = System.Console.ReadLine()|> int
     let mutable firstPoint = (0,0)
     let values = 
-        Seq.init t (fun i -> let currentPoint = System.Console.ReadLine() 
-                             currentPoint)
+        Seq.init testCases (fun i -> System.Console.ReadLine())
         |> Seq.map getPoint
         |> Seq.toList
         
@@ -86,10 +83,15 @@ let main argv =
 ```
 
 New concepts:
+- **Seq.pairwise**
+Seq.pairwise method will take a sequence and returns a sequence of tuple with element in the input sequence and its predecessor.
+eg: `Seq.pairwise [1..4]` returns [(1, 2); (2, 3); (3, 4)]
+- **Seq.init**
+Generates a new sequence which, when iterated, will return successive elements by calling the given function, up to the given count. eg :Seq.init count initializer
+eg : `Seq.init 4 (fun n -> n * 2)` returns [0, 2, 4, 6]
 - yield , !yield
-- seq init, Seq.pairwise 
+
 - let lines = seq { yield values.[0]; yield! values |> Array.rev;  }
-- Tail call
 
 ### Here are the few questions we discussed
 1. Is None is same as null of C#?
@@ -103,7 +105,7 @@ Yes. When you convert the F# to C# it will be null. Option monarch must have som
 Internal structure iterator and we a calculating.
 
 5. I was experimenting with the partial application, is the parameter passing always follow from the left to right? (I verified with one example)
-    Yeah.[23/09/17, 10:41:31 AM] Oleg Golovin: let fn a b c = ()
+    let fn a b c = ()
     let fn1 = fn a
     fn1 b c
     fn1 (b c)
