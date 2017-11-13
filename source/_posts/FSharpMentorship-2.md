@@ -94,18 +94,18 @@ eg : `Seq.init 4 (fun n -> n * 2)` returns `[0, 2, 4, 6]`
 - let lines = seq { yield values.[0]; yield! values |> Array.rev;  }
 
 ### Here are the few questions we discussed
-1. Is None is same as null of C#?
+1. *Is None is same as null of C#?*
 Yes. When you convert the F# to C# it is similar to null. It is used to represent a value that may not exist or invalid.
 
-2. Is there any types for None or Some?
-Yes. It is called Option type a union type of two case `None` and `Some`. eg : `int option` is a option type which wraps a int value. It is used with pattern matching for handling cases like where valid value not exists.
+2. *Is there any types for None or Some?*
+Yes. It is called Option type a union type of two case `None` and `Some`. eg : `int option` is a option type which wraps a int value. It is used with pattern matching for handling cases like where valid value not exists. [More Details](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/options)
 
-3. Is List.fold is recursive calling or for loop inside implementation?
+3. *Is List.fold is recursive calling or for loop inside implementation?*
 
-4. Is Seq.unfold similar to lazy list in C#? Is it storing any state internally?
+4. *Is Seq.unfold similar to lazy list in C#? Is it storing any state internally?*
 Internal structure iterator and we a calculating.
 
-5. Partial application, is the parameter passing always follow from the left to right?
+5. *Partial application, is the parameter passing always follow from the left to right?*
     let fn a b c = ()
     let fn1 = fn a
     fn1 b c
@@ -115,7 +115,7 @@ Internal structure iterator and we a calculating.
     let fn a b c = ()
     fn1 (fn2 a)
 
-6. While finding the type by type inference do we actually handle the runtime case? 
+6. *While finding the type by type inference do we actually handle the runtime case?* 
 For example : 
     `let x = 2147483647 + 1` No error 
     `let y = 2147483648 ` Shows error FS1147: This number is outside the allowable range for 32-bit signed integers
