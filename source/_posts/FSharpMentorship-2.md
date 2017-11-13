@@ -13,7 +13,7 @@ tags:
 Summary:
 I updated my progress in both sharp for fun and profit and hacker rank, we discussed one of my solution in hacker rank. Oleg suggested to try Fibonacci in different ways.
 [Compute the Perimeter of a Polygon](https://www.hackerrank.com/challenges/lambda-march-compute-the-perimeter-of-a-polygon)
-My Initial Code
+My initial code
 ```CSharp
 //Enter your code here. Read input from STDIN. Print output to STDOUT
 let distance (x1:int,y1:int) (x2:int,y2:int) =
@@ -47,7 +47,7 @@ let main argv =
     printfn "%f" (finalPerimeter + (distance first last))
     0
 ```
-Cleaned Up Code
+Cleaned up code
 ```CSharp
 //Enter your code here. Read input from STDIN. Print output to STDOUT
 let distance ((x1:int,y1:int), (x2:int,y2:int)) =
@@ -81,30 +81,31 @@ let main argv =
     printfn "%f" perimeter
     0
 ```
-
-New concepts:
+### New concepts I learned
 - **Seq.pairwise**
 Seq.pairwise method will take a sequence and returns a sequence of tuple with element in the input sequence and its predecessor.
-eg: `Seq.pairwise [1..4]` returns [(1, 2); (2, 3); (3, 4)]
+eg: `Seq.pairwise [1..4]` returns `[(1, 2); (2, 3); (3, 4)]`
 - **Seq.init**
 Generates a new sequence which, when iterated, will return successive elements by calling the given function, up to the given count. eg :Seq.init count initializer
-eg : `Seq.init 4 (fun n -> n * 2)` returns [0, 2, 4, 6]
+eg : `Seq.init 4 (fun n -> n * 2)` returns `[0, 2, 4, 6]`
+
 - yield , !yield
 
 - let lines = seq { yield values.[0]; yield! values |> Array.rev;  }
 
 ### Here are the few questions we discussed
 1. Is None is same as null of C#?
-Yes. When you convert the F# to C# it will be null. Option monarch must have some , none or some
+Yes. When you convert the F# to C# it is similar to null. It is used to represent a value that may not exist or invalid.
 
 2. Is there any types for None or Some?
+Yes. It is called Option type a union type of two case `None` and `Some`. eg : `int option` is a option type which wraps a int value. It is used with pattern matching for handling cases like where valid value not exists.
 
 3. Is List.fold is recursive calling or for loop inside implementation?
 
 4. Is Seq.unfold similar to lazy list in C#? Is it storing any state internally?
 Internal structure iterator and we a calculating.
 
-5. I was experimenting with the partial application, is the parameter passing always follow from the left to right? (I verified with one example)
+5. Partial application, is the parameter passing always follow from the left to right?
     let fn a b c = ()
     let fn1 = fn a
     fn1 b c
