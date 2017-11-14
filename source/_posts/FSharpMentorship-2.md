@@ -89,9 +89,14 @@ eg: `Seq.pairwise [1..4]` returns `[(1, 2); (2, 3); (3, 4)]`
 Generates a new sequence which, when iterated, will return successive elements by calling the given function, up to the given count. eg :Seq.init count initializer
 eg : `Seq.init 4 (fun n -> n * 2)` returns `[0, 2, 4, 6]`
 
-- yield , !yield
+- **yield** **VS** **yield!(yield bang)**
+```csharp
+let simpleYield = seq { for i in 1..10 do yield i}
+//
+let simpleYieldBang = seq { for i in 1..10 do yield i; yield!  simpleYield}
+//
+```
 
-- let lines = seq { yield values.[0]; yield! values |> Array.rev;  }
 
 ### Here are the few questions we discussed
 1. *Is None is same as null of C#?*
