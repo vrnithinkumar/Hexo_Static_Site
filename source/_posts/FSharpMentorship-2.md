@@ -97,7 +97,6 @@ let simpleYieldBang = seq { for i in 1..10 do yield i; yield!  simpleYield}
 //
 ```
 
-
 ### Here are the few questions we discussed
 1. *Is None is same as null of C#?*
 Yes. When you convert the F# to C# it is similar to null. It is used to represent a value that may not exist or invalid.
@@ -124,3 +123,4 @@ Internal structure iterator and we a calculating.
 For example : 
     `let x = 2147483647 + 1` No error 
     `let y = 2147483648 ` Shows error FS1147: This number is outside the allowable range for 32-bit signed integers
+Compiler will check only the current values is in the set of supported values of the type.
