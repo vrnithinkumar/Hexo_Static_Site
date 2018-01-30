@@ -10,10 +10,9 @@ tags:
     - F#
 ---
 
-Summary:
-I updated my progress in both sharp for fun and profit and hacker rank, we discussed one of my solution in hacker rank. Oleg suggested to try Fibonacci in different ways.
-[Compute the Perimeter of a Polygon](https://www.hackerrank.com/challenges/lambda-march-compute-the-perimeter-of-a-polygon)
-My initial code
+### Summary:
+I updated my progress in both sharp for fun and profit and hacker rank, we discussed one of my solution in hacker rank. Oleg suggested to try Fibonacci in different ways. We tried solving the a problem from hackerrank - [Compute the Perimeter of a Polygon](https://www.hackerrank.com/challenges/lambda-march-compute-the-perimeter-of-a-polygon).
+#### My initial code
 ```CSharp
 //Enter your code here. Read input from STDIN. Print output to STDOUT
 let distance (x1:int,y1:int) (x2:int,y2:int) =
@@ -47,7 +46,7 @@ let main argv =
     printfn "%f" (finalPerimeter + (distance first last))
     0
 ```
-Cleaned up code
+#### Cleaned up code
 ```CSharp
 //Enter your code here. Read input from STDIN. Print output to STDOUT
 let distance ((x1:int,y1:int), (x2:int,y2:int)) =
@@ -91,11 +90,13 @@ eg : `Seq.init 4 (fun n -> n * 2)` returns `[0, 2, 4, 6]`
 
 - **yield** **VS** **yield!(yield bang)**
 ```csharp
-let simpleYield = seq { for i in 1..10 do yield i}
-//
-let simpleYieldBang = seq { for i in 1..10 do yield i; yield!  simpleYield}
-//
+let simpleYield = seq { for i in 1..5 do yield i}
+\\ returns {1, 2, 3, 4, 5}
+
+let simpleYieldBang = seq { for i in 6..10 do yield i; yield!  simpleYield}
+\\ returns {6, 7, 8, 9, 10, 1, 2, 3, 4, 5} 
 ```
+`yield!` will allow to yield a seq as elements not just as seq. It will yield each elements in the sequence.
 
 ### Here are the few questions we discussed
 1. *Is None is same as null of C#?*
@@ -108,20 +109,13 @@ Yes. It is called Option type a union type of two case `None` and `Some`. eg : `
 Analyze a recursive data structure, fold recombine the results of recursively processing its constituent parts, building up a return value.
 
 4. *Is Seq.unfold similar to lazy list in C#? Is it storing any state internally?*
-Internal structure iterator and we a calculating.
+Internal structure for iterator and we a calculating on the fly. Elements in the stream are generated on-demand by applying the element generator, until a None value is returned by the element generator. Each call to the element generator returns a new residual state.
 
 5. *Partial application, is the parameter passing always follow from the left to right?*
-    let fn a b c = ()
-    let fn1 = fn a
-    fn1 b c
-    fn1 (b c)
-    let fn2 a: int -> int = fun b -> 0
-    int -> int -> unit
-    let fn a b c = ()
-    fn1 (fn2 a)
+Yes. It follows parameter passing order always follow from the left to right.
 
 6. *While finding the type by type inference do we actually handle the runtime case?* 
 For example : 
-    `let x = 2147483647 + 1` No error 
-    `let y = 2147483648 ` Shows error FS1147: This number is outside the allowable range for 32-bit signed integers
-Compiler will check only the current values is in the set of supported values of the type. It will not do a 
+    `let x = 2147483647 + 1` **No error** 
+    `let y = 2147483648 ` **Shows error FS1147: This number is outside the allowable range for 32-bit signed integers.**
+Compiler will check only the current values is in the set of supported values of the type. It will not do any operation to verify the type.
