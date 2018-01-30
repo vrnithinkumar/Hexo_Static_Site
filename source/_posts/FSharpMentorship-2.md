@@ -99,12 +99,13 @@ let simpleYieldBang = seq { for i in 1..10 do yield i; yield!  simpleYield}
 
 ### Here are the few questions we discussed
 1. *Is None is same as null of C#?*
-Yes. When you convert the F# to C# it is similar to null. It is used to represent a value that may not exist or invalid.
+Yes. When we convert the F# to C# it is similar to null. It is used to represent a value that may not exist or invalid.
 
 2. *Is there any types for None or Some?*
 Yes. It is called Option type a union type of two case `None` and `Some`. eg : `int option` is a option type which wraps a int value. It is used with pattern matching for handling cases like where valid value not exists. [More Details](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/options)
 
 3. *Is List.fold is recursive calling or for loop inside implementation?*
+Analyze a recursive data structure, fold recombine the results of recursively processing its constituent parts, building up a return value.
 
 4. *Is Seq.unfold similar to lazy list in C#? Is it storing any state internally?*
 Internal structure iterator and we a calculating.
@@ -123,4 +124,4 @@ Internal structure iterator and we a calculating.
 For example : 
     `let x = 2147483647 + 1` No error 
     `let y = 2147483648 ` Shows error FS1147: This number is outside the allowable range for 32-bit signed integers
-Compiler will check only the current values is in the set of supported values of the type.
+Compiler will check only the current values is in the set of supported values of the type. It will not do a 
