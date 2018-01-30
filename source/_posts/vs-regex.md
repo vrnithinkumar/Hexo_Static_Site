@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "RegEx in Visual Studio"
-subtitle: " \"Swap parameters in Visual Studio using regular rxpression.\""
+subtitle: " \"Swap parameters in Visual Studio using regular expression.\""
 date: 2017-08-19 14:00:00
 author: "Nithin VR"
 header-img: "vs.png"
 catalog: true
 tags:
-    - VisualStdio
+    - VisualStudio
     - RegEx
 ---
 ## Swap parameters using regular expression
@@ -48,7 +48,7 @@ Before :
 After :
 ![alt text](/2017/08/19/vs-regex/after.png "After changes.")
 
-- Be careful to select code part you want to swap parameter.Dont apply for whole Document or Solution, It might do some harmfull effects.
+- Be careful to select code part you want to swap parameter. Don't apply for whole Document or Solution, It might do some harmful effects.
 - You can tweak the RegX for other use cases where parameter pattern is different.
 - There exist some shortcuts to reorder the parameter in VS but ii didn't work for me and even if it work, We need to select each AreEqual method and apply those shortcut.
 
