@@ -13,11 +13,11 @@
 
     <title>
         
-          Generics in .NET - Sharing Some Bits | VR&#39;s Blog
+          VIM Notes - Sharing Some Bits | VR&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://vrnithinkumar.github.io/2018/01/30/GenericsInDotNet/">
+    <link rel="canonical" href="http://vrnithinkumar.github.io/2018/05/06/vim-Notes/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -158,16 +158,14 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/tags/#.NET" title=".NET">.NET</a>
-                        
-                          <a class="tag" href="/tags/#C#" title="C#">C#</a>
+                          <a class="tag" href="/tags/#vim" title="vim">vim</a>
                         
                     </div>
-                    <h1>Generics in .NET</h1>
-                    <h2 class="subheading">&quot; Design and Implementation of Generics in .NET &quot;</h2>
+                    <h1>VIM Notes</h1>
+                    <h2 class="subheading">&quot; All my VIM related notes&quot;</h2>
                     <span class="meta">
                         Posted by Nithin VR on
-                        2018-01-30
+                        2018-05-06
                     </span>
                 </div>
             </div>
@@ -186,14 +184,153 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Recently I gave talk in my office related to generics in .NET. How it got introduced and how it work behind the scenes. I mainly referred the <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2001/01/designandimplementationofgenerics.pdf" target="_blank" rel="external">Design and Implementation of Generics for the .NET Common Language Runtime</a> by <strong>Andrew Kennedy</strong> and <strong>Don Syme</strong>.</p>
-<h2 id="What-is-generics"><a href="#What-is-generics" class="headerlink" title="What is generics?"></a>What is generics?</h2><p>Generics is methodology to write programs or logic, without specialising to any type. As the program loging will be generic and it can accept type as a parameter and specialize/instantiate it for that. It is also known as <a href="https://en.wikipedia.org/wiki/Parametric_polymorphism" target="_blank" rel="external">Parametric Polymorphism</a>. It is commonly used to avoid code duplication and keep the logics independent of types in single place.</p>
-<h2 id="Generics-in-NET"><a href="#Generics-in-NET" class="headerlink" title="Generics in .NET"></a>Generics in .NET</h2><h3 id="Initial-Design-Goals"><a href="#Initial-Design-Goals" class="headerlink" title="Initial Design Goals"></a>Initial Design Goals</h3><ul>
-<li>Safety : Bugs are caught at compile time.</li>
-<li>Expressivity : Different specialization using type parameter.</li>
-<li>Clarity : Less casting between types.</li>
-<li>Efficiency : Reduced or no need for run-time checks.<h3 id="Before-generics"><a href="#Before-generics" class="headerlink" title="Before generics"></a>Before generics</h3>Before Generics was introduced in C# the object is used as its the top most in class hierarchy. But it was not type safe and there was an overhead of boxing and unboxing for primitive element types.<br><em>Example : Boxing and unboxing IL instuctions</em><br><img src="/2018/01/30/GenericsInDotNet/boxing.png" alt="alt text" title="Boxing and unboxing."><br><em>Example : Object Stack vs Generic Stack</em><br><img src="/2018/01/30/GenericsInDotNet/BeforeGenerics.png" alt="alt text" title="Generics vs Object"><h3 id="IL-code"><a href="#IL-code" class="headerlink" title="IL code"></a>IL code</h3><h2 id="Comparing-with-Generics-in-NET-Java-and-C-Templates"><a href="#Comparing-with-Generics-in-NET-Java-and-C-Templates" class="headerlink" title="Comparing with Generics in .NET. Java and C++(Templates)"></a>Comparing with Generics in .NET. Java and C++(Templates)</h2></li>
+                <h1 id="VIM-Notes"><a href="#VIM-Notes" class="headerlink" title="VIM Notes"></a>VIM Notes</h1><p>Writing down about all my vim tips here. <strong>It will be updated regularly</strong></p>
+<h2 id="Modes"><a href="#Modes" class="headerlink" title="Modes"></a>Modes</h2><p>Vim has different modes to manipulate the text. Normal Insert and Visual are the main modes.</p>
+<h3 id="Normal-Mode"><a href="#Normal-Mode" class="headerlink" title="Normal Mode"></a>Normal Mode</h3><p>Default or natural resting state. All the commands are running there to manipulate the text.</p>
+<h3 id="Insert-Mode"><a href="#Insert-Mode" class="headerlink" title="Insert Mode"></a>Insert Mode</h3><p>Mode to edit add and correct text. Where you can type.</p>
+<ul>
+<li><code>Ctrl + h</code> Delete back one char.</li>
+<li><code>Ctrl + w</code> Delete a word.</li>
+<li><code>Ctrl + u</code> Delete to beginning of the line.</li>
+<li><code>Ctrl + [</code> Change to normal mode.</li>
+<li><code>Ctrl + o</code> Insert Normal mode.</li>
+<li><code>Ctrl + r, {register}</code> is used to paste the in insert mode from register specified.</li>
 </ul>
+<h3 id="Insert-Normal-Mode"><a href="#Insert-Normal-Mode" class="headerlink" title="Insert Normal Mode"></a>Insert Normal Mode</h3><p>Just one command we can execute from the Insert mode.<br><code>Ctrl + o, zz</code> will move the current line to the center.</p>
+<h3 id="Visual-Mode"><a href="#Visual-Mode" class="headerlink" title="Visual Mode"></a>Visual Mode</h3><p>Easy to manipulate in character level, line level and rectangular blocks. Many operations and commands will be work similar to Normal mode.<br><code>v</code> will change in to the visual mode char level.<br><code>V</code> will change in to the visual mode line level.<br><code>Ctrl + v</code> will change in to the visual mode block level. But in windows <code>Ctrl + q</code> will make it to block visual mode.<br><code>o</code> will toggle the free end in the visual mode.</p>
+<h2 id="Basic-Actions"><a href="#Basic-Actions" class="headerlink" title="Basic Actions"></a>Basic Actions</h2><ul>
+<li><code>hjkl</code> - for moving around</li>
+<li><code>w</code> - jump a word.</li>
+<li><code>$</code> - at the end of line</li>
+<li><code>^</code> - beginning of the line.</li>
+</ul>
+<h3 id="Advanced-Movements"><a href="#Advanced-Movements" class="headerlink" title="Advanced Movements"></a>Advanced Movements</h3><ul>
+<li><code>`.</code> - jump to last change position.</li>
+<li><code>ma</code> - Mark the current curser location as “a”.</li>
+<li><code>`a</code> - Jump to mark named as “a”.</li>
+<li><code>:marks</code> - List all marks.</li>
+</ul>
+<h3 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h3><ul>
+<li><code>a</code> is used for appending.</li>
+<li><code>A</code> for appending to the end of the line. <code>$a</code> is another way to achieve this.</li>
+</ul>
+<h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h3><ul>
+<li><code>i</code> is used for inserting.</li>
+<li><code>I</code> is used for inserting in the first of line. <code>^i</code> is equivalent to this.</li>
+</ul>
+<h3 id="Dot-to-repeat"><a href="#Dot-to-repeat" class="headerlink" title="Dot to repeat"></a>Dot to repeat</h3><ul>
+<li><code>.</code> will repeats last executed action. Will repeating the last action VIM will consider all changes inside an insert mode to exit as single action. </li>
+<li>It will repeat every keystroke inside the insert mode.</li>
+</ul>
+<h3 id="Undo"><a href="#Undo" class="headerlink" title="Undo"></a>Undo</h3><ul>
+<li><code>u</code> for undoing. From the moment we enter Insert mode until we return to Normal mode, everything we type (or delete) counts as a single change.</li>
+</ul>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><ul>
+<li><code>d</code>     id used for deleting a character.</li>
+<li><code>dd</code>    will delete the whole line.</li>
+<li><code>dw</code>    will delete a word.</li>
+<li><code>daw</code>   will delete a word including the space around it.</li>
+<li><code>diw</code>   will delete a word not without the space.</li>
+</ul>
+<h3 id="Finding-a-char-using-f-and-t"><a href="#Finding-a-char-using-f-and-t" class="headerlink" title="Finding a char using f and t"></a>Finding a char using f and t</h3><ul>
+<li><code>fx</code> will find the char x in the line to find the next match use <code>;</code></li>
+<li><code>,</code> will use the last character search.</li>
+</ul>
+<h3 id="Indentation"><a href="#Indentation" class="headerlink" title="Indentation"></a>Indentation</h3><ul>
+<li><code>&gt;</code> is used for indentation.</li>
+<li><code>&lt;</code> left shift</li>
+<li><code>=</code> Auto indentation.</li>
+<li><code>&gt;G</code> will increases the indentation from the current line until the end of the file.</li>
+</ul>
+<h3 id="Yank"><a href="#Yank" class="headerlink" title="Yank"></a>Yank</h3><ul>
+<li>copy from current line to the n’th line<ol>
+<li><code>y20G</code>      this will yank from current line to 20th line.</li>
+<li><code>:.,20y</code>    same with range, <code>:[range]y[ank] [x]</code>.</li>
+<li><code>&quot;[register]y</code> will copy to the register specified. eg : <code>&quot;*y</code> - Will copy to system clipbord(register *).</li>
+</ol>
+</li>
+</ul>
+<h3 id="Simple-increment-and-Decrement"><a href="#Simple-increment-and-Decrement" class="headerlink" title="Simple increment and Decrement"></a>Simple increment and Decrement</h3><ul>
+<li><code>Ctrl + a</code> will increment the number under the cursor.</li>
+<li><code>Ctrl + x</code> will decrement the number under the cursor.</li>
+</ul>
+<h3 id="Search-and-Replace"><a href="#Search-and-Replace" class="headerlink" title="Search and Replace"></a>Search and Replace</h3><p><code>:[range]s[ubstitute]/{pattern}/{string}/[flags] [count]</code> format for the search and replace command.</p>
+<p><strong>Flags</strong></p>
+<ul>
+<li><code>c</code> confirm on each substitution.</li>
+<li><code>g</code> replace all occurrences.</li>
+<li><code>i</code> ignore case for pattern.</li>
+</ul>
+<p><code>:%s\old\new\g</code> : will replace the “old” with “new” in all document. </p>
+<h3 id="AutoComplete-in-vim"><a href="#AutoComplete-in-vim" class="headerlink" title="AutoComplete in vim"></a>AutoComplete in vim</h3><ul>
+<li>Auto word completion</li>
+<li>Auto line completion</li>
+<li>Auto file completion<h2 id="Registers"><a href="#Registers" class="headerlink" title="Registers"></a>Registers</h2>Registers are essentially the names memory spaces in VIM to save and re-use the texts. Registers are being accessed by <code>&quot;</code>.</li>
+<li><code>&quot;ry</code> - will yank the selected text to register named “r”.</li>
+<li><code>&quot;rp</code> - will paste the content in register “r” in normal mode.</li>
+<li><code>Ctrl + r</code> - will paste the data from register “r”.<h3 id="Common-registers"><a href="#Common-registers" class="headerlink" title="Common registers"></a>Common registers</h3>1) <code>*</code> - System clipboard.</li>
+</ul>
+<h2 id="Macro"><a href="#Macro" class="headerlink" title="Macro"></a>Macro</h2><h2 id="Sessions"><a href="#Sessions" class="headerlink" title="Sessions"></a>Sessions</h2><p>Sessions are used to save the current state of vim and restore it when you needed.</p>
+<ul>
+<li><code>:mks</code> is used to create a session for your vim editor.<br>  eg: <code>:mks ~\vimsessions\bar.vim</code></li>
+<li><code>:source</code> is used to restore the session which you saved.<br>  eg: <code>:source ~\vimsessions\bar.vim</code></li>
+</ul>
+<h2 id="VIM-plugins"><a href="#VIM-plugins" class="headerlink" title="VIM plugins"></a>VIM plugins</h2><h3 id="Vim-OrgMode"><a href="#Vim-OrgMode" class="headerlink" title="Vim-OrgMode"></a>Vim-OrgMode</h3><p><strong>Plain List:</strong></p>
+<ul>
+<li><code>&lt;localleader&gt; cl or &lt;CR&gt;</code> - insert plainlist item below</li>
+<li><code>&lt;localleader&gt; cL or &lt;C-S-CR&gt;</code> - insert plainlist item above</li>
+</ul>
+<p><strong>Checkboxes:</strong></p>
+<ul>
+<li><code>&lt;localleader&gt; cc</code> - toggle status</li>
+<li><code>&lt;localleader&gt; cn or &lt;CR&gt;</code> - insert checkbox below</li>
+<li><code>&lt;localleader&gt; cN or &lt;C-S-CR&gt;</code> - insert checkbox above</li>
+</ul>
+<p><strong>Dates:</strong></p>
+<ul>
+<li><code>&lt;localleader&gt; sa</code> - insert date</li>
+<li><code>&lt;localleader&gt; si</code> - insert inactive date</li>
+</ul>
+<p><code>&lt;localleader&gt;</code> is <code>\</code> for by default.</p>
+<h2 id="Split-Screen"><a href="#Split-Screen" class="headerlink" title="Split Screen"></a>Split Screen</h2><p><strong>with the <code>&lt;C-w&gt;</code> key</strong> </p>
+<ul>
+<li><code>&lt;Ctrl-w&gt;n</code>       - <code>:new</code> horizontal split (editing a new empty buffer)</li>
+<li><code>&lt;Ctrl-w&gt;s</code>       - <code>:split</code> window horizontally (editing current buffer)</li>
+<li><code>&lt;Ctrl-w&gt;v</code>       - <code>:vsplit</code> window vertically (editing current buffer)</li>
+<li><code>&lt;Ctrl-w&gt;c</code>       - <code>:close</code> window</li>
+<li><code>&lt;Ctrl-w&gt;o</code>       - close all windows, leaving :only the current window open</li>
+<li><code>&lt;Ctrl-w&gt;w</code>       - go to next window</li>
+<li><code>&lt;Ctrl-w&gt;p</code>       - go to previous window</li>
+<li><code>&lt;Ctrl-w&gt;&lt;Up&gt;</code>    - go to window above</li>
+<li><code>&lt;Ctrl-w&gt;&lt;Down&gt;</code>  - go to window below</li>
+<li><code>&lt;Ctrl-w&gt;&lt;Left&gt;</code>  - go to window on left</li>
+<li><code>&lt;Ctrl-w&gt;&lt;Right&gt;</code> - go to window on right</li>
+<li><code>&lt;C-w&gt; &lt;C-r&gt;</code>     - To swap the two parts of a split window</li>
+</ul>
+<h3 id="Window-size-commands"><a href="#Window-size-commands" class="headerlink" title="Window size commands"></a>Window size commands</h3><ul>
+<li><code>Ctrl+W +/-</code> - increase/decrease height (ex. 20<c-w>+)    </c-w></li>
+<li><code>Ctrl+W &gt;/&lt;</code> - increase/decrease width (ex. 30<c-w>&lt;)    </c-w></li>
+<li><code>Ctrl+W _</code> - set height (ex. 50<c-w>_)    </c-w></li>
+<li><code>Ctrl+W |</code> - set width (ex. 50<c-w>|)    </c-w></li>
+<li><code>Ctrl+W =</code> - equalize width and height of all windows<br><strong>Resizing will happen only by one characters.</strong><h2 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h2></li>
+<li><code>:new</code> will create a split window with an unnamed buffer. </li>
+<li><code>:badd filename</code> will add the file to the bufferlist.</li>
+<li><code>:enew</code> will open one in the current window. </li>
+<li><code>:vnew</code> will open one in a vertically split window. </li>
+<li><code>:tabnew</code> will open one in a new tab.</li>
+<li><code>:bn</code> will change to next buffer.</li>
+<li><code>:bp</code> will change to previous buffer.</li>
+<li><code>:br</code> will change to starting buffer list.</li>
+<li><code>:bf</code> will change to first buffer.</li>
+<li><code>:ls</code> will list all the buffers.</li>
+<li><code>:bd</code> will Delete the buffer , also we can specify the buffer id too.</li>
+</ul>
+<h2 id="Random-hacks"><a href="#Random-hacks" class="headerlink" title="Random hacks"></a>Random hacks</h2><ul>
+<li><code>:r !date /t</code> will add the current date.</li>
+</ul>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><ol>
+<li><a href="http://www.rayninfo.co.uk/vimtips.html" target="_blank" rel="external">http://www.rayninfo.co.uk/vimtips.html</a></li>
+</ol>
 
 
                 <hr>
@@ -202,13 +339,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/05/06/vim-Notes/" data-toggle="tooltip" data-placement="top" title="VIM Notes">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/10/29/FSharpMentorship-2/" data-toggle="tooltip" data-placement="top" title="F# Mentorship Program : Week-2">Next Post &rarr;</a>
+                            <a href="/2018/01/30/GenericsInDotNet/" data-toggle="tooltip" data-placement="top" title="Generics in .NET">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -255,9 +388,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#.NET" title=".NET">.NET</a>
-                        
-                          <a class="tag" href="/tags/#C#" title="C#">C#</a>
+                          <a class="tag" href="/tags/#vim" title="vim">vim</a>
                         
                     </div>
                 </section>
@@ -278,8 +409,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "vrnithinkumar";
-    var disqus_identifier = "http://vrnithinkumar.github.io/2018/01/30/GenericsInDotNet/";
-    var disqus_url = "http://vrnithinkumar.github.io/2018/01/30/GenericsInDotNet/";
+    var disqus_identifier = "http://vrnithinkumar.github.io/2018/05/06/vim-Notes/";
+    var disqus_url = "http://vrnithinkumar.github.io/2018/05/06/vim-Notes/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
