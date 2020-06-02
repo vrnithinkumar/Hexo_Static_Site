@@ -21,7 +21,7 @@ Don't worry you can revert it to back to your previous safe commit by reverting 
 
 >$ git reset HEAD^ --hard
 >
->$ git push origin master -f    
+>$ git push origin master -f
 
 
 **First step** reset the branch to the parent of the current commit.
