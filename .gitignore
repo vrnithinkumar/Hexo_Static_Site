@@ -80,3 +80,4 @@ db.json
 debug.log
 .deploy/
 themes/
+blogging.code-workspace
