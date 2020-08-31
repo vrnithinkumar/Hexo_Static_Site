@@ -59,14 +59,14 @@ Another possible solution considered was manipulating symbolic values inside the
 - Made a separate checker class for emitting diagnostics. Used the new checker to use `checkPreCall` and put bug reporting logic there.
 - Kept all smart pointer related modeling logic in `SmartPtrModeling`. Shared common functionality via a header file shared between the `SmartPtrModeling` and `SmartPtrChecker`. 
 - Made a `SmartPtrModeling` as a dependency to `SmartPtrChecker`.
-- Introduced a GDM with `MemRegion` as key and SVal as value to track the smart pointer and corresponding inner pointer.  
+- Introduced a GDM with `MemRegion` as key and `SVal` as value to track the smart pointer and corresponding inner pointer.  
 - Also added support to model `unique_ptr` constructor, release and reset methods.
 - Used `evalCall` to handle modeling. As part of this enabled constructor support in `evalCall` event with [D82256](https://reviews.llvm.org/D82256). 
 - Implemented `checkDeadSymbols` to clean up the `MemRegion` of smart pointers from the program state map when they go out of scope. Keeping the data structures in the program state as minimal as possible so that it would not grow to a great size while analyzing real code and eventually slows down the analysis.
 
 With this patch, the model can emit warnings for cases like use after default constructor, use after release, or use after the reset with a null pointer. Kept the `SmartPtrChecker` under *alpha.cplusplus* package and smart pointer modeling have to be enabled by the `ModelSmartPtrDereference` flag.
 ### checkRegionChanges for SmartPtrModeling
-[D83836](https://reviews.llvm.org/D83836): Implemented checkRegionChanges for `SmartPtrModeling`. To improve the accuracy, when a smart pointer is passed by a non-const reference into a function, removed the tracked region data. Since it is not sure what happens to the smart pointer inside the function.
+[D83836](https://reviews.llvm.org/D83836): Implemented `checkRegionChanges` for `SmartPtrModeling`. To improve the accuracy, when a smart pointer is passed by a non-const reference into a function, removed the tracked region data. Since it is not sure what happens to the smart pointer inside the function.
 ```cpp
 int foo() {
   std::unique_ptr<int> P; // note: Default constructed unique pointer is null
@@ -81,7 +81,7 @@ For example here in the code above, we are passing a default constructed `unique
 [D84600](https://reviews.llvm.org/D84600): With NoteTags added more detailed information on where the smart pointer becomes null in the bug path. Introduced a `getNullDereferenceBugType()` inter-checker API to check if the bug type is interesting.
 *After adding NoteTags:*
 ![alt text](/2020/08/31/gsoc-report/notetag.png "NoteTags")
-## Modeling for unque_ptr::get()
+### Modeling for unque_ptr::get()
 [D86029](https://reviews.llvm.org/D86029): Modeled to return tracked inner pointer for the `get()` method. The `get()` method is used to access the inner pointer. When the inner pointer is used with conditional branching or other symbol constraining methods we can use the constraints on the inner pointer to find whether the corresponding `unique_ptr` is null or not. When the inner pointer value for a `unique_ptr` is available from the tracked map we bind that value to the return value of `get()` method. Also made changes to create `conjureSymbolVal` in case of missing inner pointer value for a `unique_ptr` region we are tracking.
 *Example:*
 ![alt text](/2020/08/31/gsoc-report/get.png "Get")
@@ -155,7 +155,6 @@ int bar(std::unique_ptr<int> Q) {
 }
 ```
 Right now we are trusting `trackExpressionValue()` when it suppresses reports. It may occasionally suppress true positive warnings, but it's better than having false positives. 
-
 Below code is an example for a suppressed true positive warning.
 ```cpp
 int *return_null() {return nullptr;}
@@ -177,7 +176,7 @@ Right now there is no API similar to `markInteresting()` for marking the region 
 When raw pointers are accessed from `unique_ptr` via `get()` or `release()`, we have to ensure that the raw pointers are tracked via `MallocChecker`. Also, enable SmartPtrModeling to communicate the deallocation to `MallocChecker` when we see the destructor call of the `unique_ptr` and it has a default deleter. Also, communicating with `MallocChecker` could potentially find double-free errors when the same pointer is passed to multiple unique_ptrs or it is also freed independently of the `unique_ptr` ([example](/2020/08/31/gsoc-report/#Double-free-error-example)).
 
 ### Add modeling for user-defined custom smart pointers
-Many C++ projects have their own custom implementations of smart pointers similar to [boost::shared_ptr](https://www.boost.org/doc/libs/1_61_0/libs/smart_ptr/shared_ptr.htm) or [llvm::IntrusiveRefCntPtr](https://llvm.org/doxygen/classllvm_1_1IntrusiveRefCntPtr.html). If the user can specify the custom smart pointers and methods on it, we could reuse the existing SmartPtrModeling for modeling and checking the custom smart pointers.
+Many C++ projects have their own custom implementations of smart pointers similar to [boost::shared_ptr](https://www.boost.org/doc/libs/1_61_0/libs/smart_ptr/shared_ptr.htm) or [llvm::IntrusiveRefCntPtr](https://llvm.org/doxygen/classllvm_1_1IntrusiveRefCntPtr.html). If the user can specify the custom smart pointers and methods on it, we could reuse the existing `SmartPtrModeling` for modeling and checking the custom smart pointers.
 ## How to use
 All the changes are in the master. But the checker and modeling are not enabled by default. Checker is under the *alpha.cplusplus* package and smart pointer modeling has to be enabled by the `ModelSmartPtrDereference` flag. 
 
@@ -265,7 +264,6 @@ void foo() {
   int *i = new int(42);
   std::shared_ptr<int> p1(i);
   std::shared_ptr<int> p2(i); // When p2 goes out of scope it will try 
-  to delete the inner pointer which is already deleted by p1.
+                              // to delete the inner pointer which is already deleted by p1.
 }
 ```
-
