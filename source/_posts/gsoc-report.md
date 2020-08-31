@@ -15,6 +15,7 @@ tags:
 - My GSoC work on GitHub: [Commits](https://github.com/llvm/llvm-project/search?q=author%3Avrnithinkumar+author-date%3A2020-06-01..2020-08-31&unscoped_q=author%3Avrnithinkumar+author-date%3A2020-06-01..2020-08-31&type=Commits)
 (Maybe the link changes, if that is the case please search for: “[author:vrnithinkumar author-date:2020-06-01..2020-08-31]” in the repository of the LLVM project)
 - My GSoC work on Phabricator: [Reviews](https://reviews.llvm.org/differential/query/UwCbJYKaRcDb/)
+- [GSoC Project Page Link](https://summerofcode.withgoogle.com/projects/#5376312975294464)
 - [Original report link](https://docs.google.com/document/d/1WZSt45kZUhg0UbOv0HXBhyEYaHrb-G-TpEhj_nU041Q/edit?usp=sharing)
 ## Abstract
 The [Clang Static Analyzer](https://clang-analyzer.llvm.org/) is used to find bugs in the program by analyzing source code without compiling and executing. It uses symbolic computations to find the defects. Analyzer covers a variety of checks targeted at finding security and API usage bugs, dead code, null dereference, division by zero, and other logic errors. The Clang Static Analyzer already has a checker to find the null pointer dereference in code, however it is not sufficient for higher abstractions such as C++ smart pointers or optionals. By explicitly teaching the C++ standard class behaviors we can make the Analyzer to find more bugs related to modern C++ code.
