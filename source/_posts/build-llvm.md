@@ -29,7 +29,7 @@ cmake -G Ninja \
 ninja clang
 ninja cxx
 ```
-Apparently we need to build libc++: by running  `ninja cxx` other wise we get some header errors.
+Apparently we need to build libc++: by running `ninja cxx` other wise we get some header errors.
 ### Running LLVM-Clang Static Analyzer
 To run a static analyzer on `test.cpp` file, we can use `scan-build` utility with below command.
 ```
